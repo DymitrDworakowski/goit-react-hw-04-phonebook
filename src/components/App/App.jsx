@@ -28,8 +28,7 @@ const App = () => {
   // Добавляет новый контакт в список контактов.
   const addContact = contact => {
     const isInContacts = contacts.some(
-      ({ name }) =>
-        name.toLowerCase().trim() === contact.name.toLowerCase().trim()
+      ({ name }) => name.toLowerCase() === contact.name.toLowerCase()
     );
     // Проверяет, существует ли контакт с таким же именем в списке контактов. Если контакт уже существует, выводится предупреждение.
     if (isInContacts) {
@@ -45,12 +44,12 @@ const App = () => {
 
   //Изменяет значение фильтра.
   const changeFilter = event => {
-    setFilter(event.target.value.trim());
+    setFilter(event.target.value);
   };
 
   // Получение отфильтрованных контактов.
   const getVisibleContacts = () => {
-    const normalizedFilter = filter.toLowerCase();
+    const normalizedFilter = filter.toLowerCase().trim();
 
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizedFilter)
